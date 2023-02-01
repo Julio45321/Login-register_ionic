@@ -2,7 +2,7 @@
   <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -14,6 +14,18 @@
             <ion-label>{{pagina.titulo}}</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item>
+            <ion-icon slot="start" name="document-text-outline"></ion-icon>
+            <ion-label>Contacto</ion-label>
+          </ion-item>
+         </ion-menu-toggle>
+         <ion-menu-toggle>
+          <ion-item>
+            <ion-icon slot="start" name="star-outline"></ion-icon>
+            <ion-label>Calificanos</ion-label>
+          </ion-item>
+         </ion-menu-toggle>
         <ion-menu-toggle auto-hide="false">
           <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
             <ion-icon slot="start" [name]="'exit-outline'"></ion-icon>
@@ -23,6 +35,5 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-
   <ion-router-outlet id="main" main></ion-router-outlet>
 </ion-split-pane>
