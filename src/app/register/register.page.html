@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="aqua">
+  <ion-toolbar color="turquesa">
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -7,33 +7,50 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Registrate</ion-card-title>
-</ion-card-header>
-  <ion-card-content>
-    <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
-      <ion-item>
-        <ion-label position="floating">
-          <ion-icon name="person"></ion-icon>  Nombre</ion-label>
-        <ion-input formControlName="nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          <ion-icon name="key"></ion-icon>  Contraseña</ion-label>
-        <ion-input formControlName="password" type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">
-          <ion-icon name="key"></ion-icon>  Confirmar Contraseña</ion-label>
-        <ion-input formControlName="confirmarPassword" type="password"></ion-input>
-      </ion-item>
-      <br>
-      <ion-button (click)="guardar()">
-        Registrarse
-      </ion-button>
-    </form>
-   </ion-card-content>
-  </ion-card>
+<ion-content class="ion-padding background">
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content center">
+      <ion-col class="ion-align-self-start"></ion-col>
+      <ion-col size="12" class="ion-align-self-center">
+        <ion-card class="card">
+          <ion-card-header>
+            <ion-card-title>Registro de usuario</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form (ngSubmit)="registrar(form)" #form="ngForm">
+                <div class="input-field col s6">
+                  <ion-label><ion-icon name="mail-outline"></ion-icon> Email</ion-label>
+                  <span *ngIf="form.submitted && form.controls['email'].errors" class="red-text text-accent-4">
+                    **Correo obligatorio</span>
+                  <ion-input type="email" placeholder="Ingresa tu Email" name="email"
+                  [(ngModel)]="usuario.email" required email>
+                  </ion-input>
+                </div>
+                <div class="input-field col s6">
+                  <ion-label><ion-icon name="key"></ion-icon> Password</ion-label>
+                  <span *ngIf="form.submitted && form.controls['password'].errors" class="red-text text-accent-4">
+                    **Al menos 6 caracteres</span>
+                  <ion-input type="password" placeholder="Ingresa tu Password" name="password"
+                   [(ngModel)]="usuario.password" required minlength="6">
+                  </ion-input>
+                </div>
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-button type="submit" expand="block" color="azulboton">
+                      Iniciar
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-button routerLink="/login" expand="block" color="naranjabtn">
+                      Cancelar
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-align-self-end"></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,5 +1,5 @@
 <ion-split-pane contentId="main">
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu side="start" menuId="menuControl" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
@@ -15,13 +15,13 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item>
+          <ion-item routerLink="/contacto">
             <ion-icon slot="start" name="document-text-outline"></ion-icon>
             <ion-label>Contacto</ion-label>
           </ion-item>
          </ion-menu-toggle>
          <ion-menu-toggle>
-          <ion-item>
+          <ion-item routerLink="/opinion">
             <ion-icon slot="start" name="star-outline"></ion-icon>
             <ion-label>Calificanos</ion-label>
           </ion-item>

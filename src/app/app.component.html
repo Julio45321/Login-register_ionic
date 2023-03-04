@@ -1,3 +1,36 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main">
+    <ion-menu side="start" menuId="menuControl" contentId="main">
+      <ion-header>
+        <ion-toolbar color="turquesa">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item routerLink="/contacto">
+              <ion-icon slot="start" name="document-text-outline"></ion-icon>
+              <ion-label>Contacto</ion-label>
+            </ion-item>
+           </ion-menu-toggle>
+           <ion-menu-toggle>
+            <ion-item routerLink="/opinion">
+              <ion-icon slot="start" name="star-outline"></ion-icon>
+              <ion-label>Calificanos</ion-label>
+            </ion-item>
+           </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
+              <ion-icon slot="start" [name]="'exit-outline'"></ion-icon>
+              <ion-label>Salir</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main" main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

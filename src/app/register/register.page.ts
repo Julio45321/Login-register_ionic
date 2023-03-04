@@ -1,12 +1,17 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../servicios/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
   Validator,
   FormBuilder,
-  Validators
+  Validators,
+  NgForm
 } from '@angular/forms'
 import { AlertController, NavController } from '@ionic/angular';
+import { Usuario } from '../Models/Usuario';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -14,42 +19,48 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  formularioRegistro:FormGroup;
+  usuario:Usuario={
+    email:'',
+    password:''
+  }
 
-  constructor( public fb:FormBuilder,
-    public alertController: AlertController,
-    public navCtrl:NavController
+  constructor(
+    private servicio:AuthService,
+    private ruta:Router
 
-    ) {
+    ) {}
+  ngOnInit() {
+  }
 
-    this.formularioRegistro= this.fb.group({
-      'nombre':new FormControl("",Validators.required),
-      'password': new FormControl("",Validators.required),
-      'confirmarPassword': new FormControl("",Validators.required)
+  registrar(form:NgForm){
+     if(form.invalid){
+      return
+     }
+
+     Swal.fire({
+      allowOutsideClick:false,
+      icon:'info',
+      width:600,
+      heightAuto:false,
+      text:"Espere por favor..."
+    })
+    Swal.showLoading()
+
+    this.servicio.registrar(this.usuario)
+    .subscribe(resp=>{
+      console.log(resp);
+      Swal.close()
+
+      this.ruta.navigateByUrl('/inicio')
+    },err=>{
+      console.log(err.error.error.message);
+      Swal.fire({
+        icon:'error',
+        title:"Error al registrar",
+        text:err.error.error.message,
+        heightAuto:false
+      })
     })
   }
 
-  ngOnInit() {
-  }
-async guardar(){
-
-  var f = this.formularioRegistro.value
-  if(this.formularioRegistro.invalid){
-   const alert = await this.alertController.create({
-    header:'Alerta Datos Incompletos',
-    message:'Tienes que llenar todos los datos',
-    buttons: ['Aceptar']
-   })
-   await alert.present()
-   return
-  }
-
-  var usuario = {
-    nombre: f.nombre,
-    password: f.password,
-  }
-  localStorage.setItem('usuario',JSON.stringify(usuario))
-  localStorage.setItem('ingresado','true')
-  this.navCtrl.navigateRoot('menu/inicio')
-}
 }

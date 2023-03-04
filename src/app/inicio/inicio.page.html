@@ -1,17 +1,31 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="turquesa">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="llamarMenu()">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <h1>Comienza A Ahorrar</h1>
-  </ion-item>
-    <ion-button expand="block" routerLink="/agregar">Agregar Recolector</ion-button>
+<ion-content class="background">
+    <h1 align="center">Comienza A Ahorrar</h1>
+  <ion-card>
+    <ion-slides pager="true">
+      <ion-slide>
+        <img src="../../assets/img3.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/img4.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/img5.png">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+    <ion-button color="azulboton" expand="block" routerLink="/agregar">Agregar Recolector</ion-button>
 
     <ion-card>
       <ion-card-header>
@@ -19,16 +33,19 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label>Contenedor 1: 100%</ion-label>
+          <h2>Contenedor numero 1:</h2>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" [style.width]="progress + '%'"></div>
+          </div>
         </ion-item>
         <ion-item>
-          <ion-label>Contenedor 2: 30%</ion-label>
+          <h2>Contenedor numero 2:</h2>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" [style.width]="progress + '%'"></div>
+          </div>
         </ion-item>
-        <ion-item>
-          <ion-label>Contenedor 3: 0%</ion-label>
-        </ion-item>
-      <ion-button color="success" routerLink="/editar" fill="solid">Editar</ion-button>
-      <ion-button color="secondary "routerLink="/datos" fill="solid">Datos</ion-button>
+      <ion-button color="success" routerLink="/editar" fill="solid" color="azulboton">Editar</ion-button>
+      <ion-button color="secondary "routerLink="/datos" fill="solid" color="citrofrut">Datos</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -38,16 +55,19 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label>Contenedor 1: 60%</ion-label>
+          <h2>Contenedor numero 1:</h2>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" [style.width]="progress + '%'"></div>
+          </div>
         </ion-item>
         <ion-item>
-          <ion-label>Contenedor 2: 0%</ion-label>
+          <h2>Contenedor numero 2:</h2>
+          <div class="progress-bar" color="citrofrut">
+            <div class="progress-bar-fill" [style.width]="progress + '%'" ></div>
+          </div>
         </ion-item>
-        <ion-item>
-          <ion-label>Contenedor 3: 0%</ion-label>
-        </ion-item>
-      <ion-button color="success" routerLink="/editar" fill="solid">Editar</ion-button>
-      <ion-button color="secondary" routerLink="/datos" fill="solid">Datos</ion-button>
+      <ion-button color="success" routerLink="/editar" fill="solid" color="azulboton">Editar</ion-button>
+      <ion-button color="secondary" routerLink="/datos" fill="solid" color="citrofrut">Datos</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -57,17 +77,21 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label>Contenedor 1: 100%</ion-label>
+          <h2>Contenedor numero 1:</h2>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" [style.width]="progress + '%'"></div>
+          </div>
         </ion-item>
         <ion-item>
-          <ion-label>Contenedor 2: 100%</ion-label>
+          <h2>Contenedor numero 2:</h2>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" [style.width]="progress + '%'"></div>
+          </div>
         </ion-item>
-        <ion-item>
-          <ion-label>Contenedor 3: 100%</ion-label>
-        </ion-item>
-      <ion-button color="success" routerLink="/editar" fill="solid">Editar</ion-button>
-      <ion-button color="secondary" routerLink="/datos" fill="solid">Datos</ion-button>
+      <ion-button color="success" routerLink="/editar" fill="solid" color="azulboton">Editar</ion-button>
+      <ion-button color="secondary" routerLink="/datos" fill="solid" color="citrofrut">Datos</ion-button>
       </ion-card-content>
     </ion-card>
+
 
 </ion-content>

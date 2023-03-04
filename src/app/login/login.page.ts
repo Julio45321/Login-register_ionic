@@ -1,12 +1,11 @@
+import { AuthService } from './../servicios/auth.service';
+import { Usuario } from './../Models/Usuario';
 import { AlertController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validator,
-  FormBuilder,
-  Validators
-} from '@angular/forms'
+import Swal from 'sweetalert2'
+import { NgForm } from '@angular/forms'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -14,38 +13,54 @@ import {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  formularioLogin:FormGroup;
+  usuario:Usuario={
+    email:'',
+    password:''
+  };
 
   constructor(
-    public fb:FormBuilder,
-    public alertController:AlertController,
-    public navCtrl:NavController
+    private servicio:AuthService,
+    private ruta:Router
+
   ) {
-    this.formularioLogin = this.fb.group({
-      'nombre': new FormControl("",Validators.required),
-      'password': new FormControl("",Validators.required)
-    })
+
   }
 
   ngOnInit() {
   }
 
-  async Ingresar(){
-    var f = this.formularioLogin.value;
-    var usuario = JSON.parse(localStorage.getItem('usuario')!);
+  login(form:NgForm){
+    if(form.invalid){
+      return
+    }
 
-     if(usuario.nombre == f.nombre && usuario.password == f.password){
-       console.log('ingresado')
-       localStorage.setItem('ingresado','true')
-       this.navCtrl.navigateRoot('menu/inicio')
-     }else{
-      const alert = await this.alertController.create({
-        header:'Alerta Datos Incorrectos',
-        message:'Tus datos son incorrectos, verficalos por favor',
-        buttons: ['Aceptar']
-       })
-       await alert.present()
-     }
+    Swal.fire({
+      allowOutsideClick:false,
+      icon:'info',
+      width:600,
+      heightAuto:false,
+      text:"Espere por favor..."
+    })
+    Swal.showLoading()
+
+    this.servicio.login(this.usuario)
+    .subscribe(resp=>{
+      console.log(resp);
+      Swal.close()
+
+      this.ruta.navigateByUrl('/inicio')
+    },err=>{
+      console.log(err.error.error.message);
+      Swal.fire({
+        icon:'error',
+        title:"Error al autenticar",
+        text:err.error.error.message,
+        heightAuto:false
+      })
+    })
   }
+
+
+
+
 }
