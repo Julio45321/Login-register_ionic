@@ -12,10 +12,10 @@ export class InicioPage implements OnInit {
   progress: number = 0;
 
   constructor(
-    private servicio:AuthService,
-    private ruta:Router,
-    public menu:MenuController
-  ) { }
+    private servicio: AuthService,
+    private ruta: Router,
+    public menu: MenuController
+  ) {}
 
   ngOnInit() {
     setInterval(() => {
@@ -23,16 +23,14 @@ export class InicioPage implements OnInit {
         this.progress++;
       }
     }, 50);
-
-
   }
 
-  salir(){
-    this.servicio.logout()
-  this.ruta.navigateByUrl('/login')
+  salir() {
+    this.servicio.logout();
+    this.ruta.navigateByUrl('/login');
   }
 
-  llamarMenu(){
-    this.menu.open("menuControl");
+  llamarMenu() {
+    this.menu.open('menuControl');
   }
 }

@@ -7,10 +7,22 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-menu-toggle auto-hide="false" *ngFor="let pagina of paginas; let i = index">
-          <ion-item (click)="cambiarIndiceSeleccionado(i)" routerDirection="root" [routerLink]="[pagina.url]"
-            lines="none" detail="false" [class.selected]="indiceSeleccionado === i">
-            <ion-icon slot="start" [name]="pagina.icono + '-outline'"></ion-icon>
+        <ion-menu-toggle
+          auto-hide="false"
+          *ngFor="let pagina of paginas; let i = index"
+        >
+          <ion-item
+            (click)="cambiarIndiceSeleccionado(i)"
+            routerDirection="root"
+            [routerLink]="[pagina.url]"
+            lines="none"
+            detail="false"
+            [class.selected]="indiceSeleccionado === i"
+          >
+            <ion-icon
+              slot="start"
+              [name]="pagina.icono + '-outline'"
+            ></ion-icon>
             <ion-label>{{pagina.titulo}}</ion-label>
           </ion-item>
         </ion-menu-toggle>
@@ -19,15 +31,20 @@
             <ion-icon slot="start" name="document-text-outline"></ion-icon>
             <ion-label>Contacto</ion-label>
           </ion-item>
-         </ion-menu-toggle>
-         <ion-menu-toggle>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
           <ion-item routerLink="/opinion">
             <ion-icon slot="start" name="star-outline"></ion-icon>
             <ion-label>Calificanos</ion-label>
           </ion-item>
-         </ion-menu-toggle>
+        </ion-menu-toggle>
         <ion-menu-toggle auto-hide="false">
-          <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
+          <ion-item
+            (click)="salir()"
+            routerDirection="root"
+            lines="none"
+            detail="false"
+          >
             <ion-icon slot="start" [name]="'exit-outline'"></ion-icon>
             <ion-label>Salir</ion-label>
           </ion-item>

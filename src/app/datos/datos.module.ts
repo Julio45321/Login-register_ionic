@@ -15,8 +15,8 @@ import { DatosPage } from './datos.page';
     FormsModule,
     IonicModule,
     DatosPageRoutingModule,
-    ComponentesModule
+    ComponentesModule,
   ],
-  declarations: [DatosPage]
+  declarations: [DatosPage],
 })
 export class DatosPageModule {}

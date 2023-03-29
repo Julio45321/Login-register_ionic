@@ -7,46 +7,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-
-  indiceSeleccionado: number = 0
+  indiceSeleccionado: number = 0;
 
   paginas = [
     {
-      titulo:'Inicio',
-      url:'/menu/inicio',
-      icono:'home'
+      titulo: 'Inicio',
+      url: '/menu/inicio',
+      icono: 'home',
     },
+  ];
 
-  ]
+  constructor(
+    public alertController: AlertController,
+    public navCtrl: NavController
+  ) {}
 
-  constructor(public alertController:AlertController,
-    public navCtrl:NavController) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  cambiarIndiceSeleccionado(i:any){
+  cambiarIndiceSeleccionado(i: any) {
     this.indiceSeleccionado = i;
   }
 
-  async salir(){
+  async salir() {
     const alert = await this.alertController.create({
       header: 'Salir',
       message: '¿Estas seguro que deseas salir?',
       buttons: [
         {
           text: 'Cancelar',
-          handler: () => {
-
-          }
-        }, {
+          handler: () => {},
+        },
+        {
           text: 'Sii',
           handler: () => {
             localStorage.removeItem('ingresado');
             this.navCtrl.navigateRoot('login');
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();

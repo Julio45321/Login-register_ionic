@@ -15,8 +15,8 @@ import { AgregarPage } from './agregar.page';
     FormsModule,
     IonicModule,
     AgregarPageRoutingModule,
-    ComponentesModule
+    ComponentesModule,
   ],
-  declarations: [AgregarPage]
+  declarations: [AgregarPage],
 })
 export class AgregarPageModule {}

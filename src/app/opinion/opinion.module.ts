@@ -15,8 +15,8 @@ import { OpinionPage } from './opinion.page';
     FormsModule,
     IonicModule,
     OpinionPageRoutingModule,
-    ComponentesModule
+    ComponentesModule,
   ],
-  declarations: [OpinionPage]
+  declarations: [OpinionPage],
 })
 export class OpinionPageModule {}

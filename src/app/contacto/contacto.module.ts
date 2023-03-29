@@ -15,8 +15,8 @@ import { ComponentesModule } from '../componentes/componentes.module';
     FormsModule,
     IonicModule,
     ContactoPageRoutingModule,
-    ComponentesModule
+    ComponentesModule,
   ],
-  declarations: [ContactoPage]
+  declarations: [ContactoPage],
 })
 export class ContactoPageModule {}

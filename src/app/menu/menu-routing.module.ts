@@ -7,13 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: MenuPage,
-    children:[{
+    children: [
+      {
         path: 'inicio',
-        loadChildren: () => import('../inicio/inicio.module').then( m => m.InicioPageModule),
-
-    }]
-  }
-]
+        loadChildren: () =>
+          import('../inicio/inicio.module').then((m) => m.InicioPageModule),
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

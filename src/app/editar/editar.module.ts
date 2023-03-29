@@ -15,8 +15,8 @@ import { EditarPage } from './editar.page';
     FormsModule,
     IonicModule,
     EditarPageRoutingModule,
-    ComponentesModule
+    ComponentesModule,
   ],
-  declarations: [EditarPage]
+  declarations: [EditarPage],
 })
 export class EditarPageModule {}

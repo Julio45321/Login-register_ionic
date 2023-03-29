@@ -6,8 +6,8 @@ import { AgregarPage } from './agregar.page';
 const routes: Routes = [
   {
     path: '',
-    component: AgregarPage
-  }
+    component: AgregarPage,
+  },
 ];
 
 @NgModule({

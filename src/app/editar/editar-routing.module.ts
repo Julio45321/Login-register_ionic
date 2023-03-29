@@ -6,8 +6,8 @@ import { EditarPage } from './editar.page';
 const routes: Routes = [
   {
     path: '',
-    component: EditarPage
-  }
+    component: EditarPage,
+  },
 ];
 
 @NgModule({

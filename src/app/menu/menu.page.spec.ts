@@ -9,8 +9,8 @@ describe('MenuPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [MenuPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuPage);

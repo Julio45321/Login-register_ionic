@@ -9,8 +9,8 @@ describe('AgregarPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgregarPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [AgregarPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AgregarPage);
