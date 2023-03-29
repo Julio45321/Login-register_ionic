@@ -35,13 +35,11 @@ export class RegisterPage implements OnInit {
 
     this.servicio.registrar(this.usuario).subscribe(
       (resp) => {
-        console.log(resp);
         Swal.close();
-
         this.ruta.navigateByUrl('/inicio');
       },
       (err) => {
-        console.log(err.error.error.message);
+        console.error(err.error.error.message);
         Swal.fire({
           icon: 'error',
           title: 'Error al registrar',

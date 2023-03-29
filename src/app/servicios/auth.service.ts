@@ -22,7 +22,6 @@ export class AuthService {
       .post(`${this.auth}signInWithPassword?key=${this.key}`, authDatos)
       .pipe(
         map((resp: any) => {
-          console.log(resp);
           this.almacenarToken(resp['idToken']);
           localStorage.setItem('uid', resp['localId']);
           return resp;
@@ -36,7 +35,6 @@ export class AuthService {
     };
     return this.http.post(`${this.auth}signUp?key=${this.key}`, authDatos).pipe(
       map((resp: any) => {
-        console.log(resp);
         this.almacenarToken(resp['idToken']);
         localStorage.setItem('uid', resp['localId']);
 
@@ -45,11 +43,7 @@ export class AuthService {
           tipo: 'normal',
           uid: resp['localId'],
         };
-        this.http
-          .post(`${this.database}usuarios.json`, datos)
-          .subscribe((resp2) => {
-            console.log(resp2);
-          });
+        this.http.post(`${this.database}usuarios.json`, datos);
         return resp;
       })
     );
@@ -89,7 +83,6 @@ export class AuthService {
 
     let hoy = new Date();
     hoy.setSeconds(3600);
-    console.log(hoy);
 
     localStorage.setItem('expira', hoy.getTime().toString());
   }
