@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { DatosService } from '../servicios/datos.service';
 
 @Component({
   selector: 'app-datos',
@@ -10,8 +11,16 @@ export class DatosPage implements OnInit {
   @ViewChild('barCanvas') barCanvas: any;
 
   barChart: any;
+  valveState: boolean = false;
 
-  constructor() {}
+  constructor(private servicio: DatosService) {}
+
+  ngOnInit() {
+    //Obtenemos el valor que esta en la BBDD al iniciar
+    this.servicio.getValveState().subscribe((res: boolean) => {
+      this.valveState = res;
+    });
+  }
 
   ionViewDidEnter() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -39,5 +48,9 @@ export class DatosPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  onClickSwitch(estado: boolean) {
+    this.servicio.updateValveState(estado).subscribe((res: boolean) => {
+      this.valveState = res;
+    });
+  }
 }

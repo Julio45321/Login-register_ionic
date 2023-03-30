@@ -13,7 +13,12 @@
         <h1>Porcentaje utilizado 100%</h1>
       </ion-text>
       <h5>Ultima hora utilizado 8:20pm</h5>
-      <ion-button color="azulboton" fill="solid">Vaciar Contenedor</ion-button>
+      <ion-label>Abierto</ion-label>
+      <ion-toggle
+        slot="end"
+        [(ngModel)]="valveState"
+        (ionChange)="onClickSwitch(valveState)"
+      ></ion-toggle>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -25,12 +30,8 @@
         <h1>Porcentaje utilizado 80%</h1>
       </ion-text>
       <h5>Ultima hora utilizado 3:20pm</h5>
-      <ion-button color="azulboton" fill="solid">Vaciar Contenedor</ion-button>
+      <ion-label>Abierto</ion-label>
+      <ion-toggle slot="end"></ion-toggle>
     </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <div class="chart-container">
-      <canvas id="barCanvas"></canvas>
-    </div>
   </ion-card>
 </ion-content>
