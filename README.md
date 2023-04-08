@@ -1,4 +1,4 @@
-- [] Logo en alguna parte del login
+- [x] Logo en alguna parte del login
 - [] En la pagina del Home poner colores acordes a la app
 - [] En la pagina del Home poner imagenes referentes a la app
 - [] Poner una grafica en los recolectores

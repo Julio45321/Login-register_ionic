@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,11 +25,25 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
-.background{
-  --background: url('assets/img/Fondo-login.jpg') no-repeat;
+.background {
+  --background: url("assets/img/Fondo-login.jpg") no-repeat;
 }
 
-.transparente{
+.transparente {
   --background: transparent;
+}
+
+.logo-app {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-app h1 {
+  font-style: italic;
+  font-weight: 800;
+  color: #070a52;
+  font-family: "Alkatra", cursive;
+  font-size: 30px;
 }

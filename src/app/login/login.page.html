@@ -9,9 +9,13 @@
     <ion-row class="ion-justify-content center">
       <ion-col class="ion-align-self-start"></ion-col>
       <ion-col size="12" class="ion-align-self-center">
+        <div class="logo-app">
+          <img src="../../assets/icon/logo.svg" />
+          <h1 class="logo-app">Aqua da vida</h1>
+        </div>
         <ion-card class="card">
           <ion-card-header>
-            <ion-card-title>Inicia Sesión</ion-card-title>
+            <ion-card-title color="#000">Iniciar sesión</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <form (ngSubmit)="login(form)" #form="ngForm">
