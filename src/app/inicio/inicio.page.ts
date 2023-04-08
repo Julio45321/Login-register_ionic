@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { InicioService } from '../servicios/inicio.service';
 
 @Component({
   selector: 'app-inicio',
@@ -9,20 +10,28 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  progress: number = 0;
+  progress1: number = 0;
+  progress2: number = 0;
+  latestData: any = {};
 
   constructor(
+    private inicioService: InicioService,
     private servicio: AuthService,
-    private ruta: Router,
-    public menu: MenuController
+    public menu: MenuController,
+    private ruta: Router
   ) {}
 
   ngOnInit() {
-    setInterval(() => {
-      if (this.progress < 100) {
-        this.progress++;
-      }
-    }, 50);
+    this.inicioService.getProgressBar().subscribe((res) => {
+      const entries = Object.entries(res);
+
+      //Obtenemos el ultimos dato registrado por el sensor
+      this.latestData = entries[entries.length - 1];
+
+      //Asignamos los datos
+      this.progress1 = this.latestData[1].contenedor1;
+      this.progress2 = this.latestData[1].contenedor2;
+    });
   }
 
   salir() {
