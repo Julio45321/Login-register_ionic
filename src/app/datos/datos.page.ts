@@ -12,10 +12,13 @@ export class DatosPage implements OnInit {
 
   barChart: any;
   valveState: boolean = false;
+  textValve1: string = '';
+
   latestData: any = {};
+  lastDateUpdated: any;
+
   container1: number = 0;
   container2: number = 0;
-  lastDateUpdated: any;
 
   constructor(private servicio: DatosService) {}
 
@@ -36,9 +39,13 @@ export class DatosPage implements OnInit {
       this.container2 = this.latestData[1].contenedor2;
     });
 
+    //Ultima hora de actualizacion
     var today = new Date();
     var now = today.toLocaleString();
     this.lastDateUpdated = now;
+
+    //Texto para la valvula
+    this.textValve1 = this.valveState ? 'Abierto' : 'Cerrado';
   }
 
   ionViewDidEnter() {
@@ -71,5 +78,8 @@ export class DatosPage implements OnInit {
     this.servicio.updateValveState(estado).subscribe((res: boolean) => {
       this.valveState = res;
     });
+
+    //Texto para la valvula
+    this.textValve1 = this.valveState ? 'Abierto' : 'Cerrado';
   }
 }

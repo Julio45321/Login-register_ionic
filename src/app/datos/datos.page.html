@@ -13,7 +13,7 @@
         <h1>Porcentaje utilizado {{container1}}%</h1>
       </ion-text>
       <h5>Ultima actualización {{lastDateUpdated}}</h5>
-      <ion-label>Abierto</ion-label>
+      <ion-label>{{textValve1}}</ion-label>
       <ion-toggle
         slot="end"
         [(ngModel)]="valveState"
@@ -30,7 +30,7 @@
         <h1>Porcentaje utilizado {{container2}}%</h1>
       </ion-text>
       <h5>Ultima actualización {{lastDateUpdated}}</h5>
-      <ion-label>Abierto</ion-label>
+      <ion-label>Cerrado</ion-label>
       <ion-toggle slot="end"></ion-toggle>
     </ion-card-content>
   </ion-card>
