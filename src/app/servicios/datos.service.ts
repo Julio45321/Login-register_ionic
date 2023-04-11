@@ -16,4 +16,8 @@ export class DatosService {
   updateValveState(estado: boolean) {
     return this.http.put<boolean>(`${this.API_URL}/estado.json`, estado);
   }
+
+  getPercentagesData() {
+    return this.http.get(`${this.API_URL}/datos.json`);
+  }
 }

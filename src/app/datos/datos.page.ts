@@ -12,6 +12,9 @@ export class DatosPage implements OnInit {
 
   barChart: any;
   valveState: boolean = false;
+  latestData: any = {};
+  container1: number = 0;
+  container2: number = 0;
 
   constructor(private servicio: DatosService) {}
 
@@ -19,6 +22,17 @@ export class DatosPage implements OnInit {
     //Obtenemos el valor que esta en la BBDD al iniciar
     this.servicio.getValveState().subscribe((res: boolean) => {
       this.valveState = res;
+    });
+
+    this.servicio.getPercentagesData().subscribe((res: any) => {
+      const entries = Object.entries(res);
+
+      //Obtenemos el ultimos dato registrado por el sensor
+      this.latestData = entries[entries.length - 1];
+
+      //Asignamos los datos
+      this.container1 = this.latestData[1].contenedor1;
+      this.container2 = this.latestData[1].contenedor2;
     });
   }
 
