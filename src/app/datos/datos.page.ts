@@ -15,6 +15,7 @@ export class DatosPage implements OnInit {
   latestData: any = {};
   container1: number = 0;
   container2: number = 0;
+  lastDateUpdated: any;
 
   constructor(private servicio: DatosService) {}
 
@@ -34,6 +35,10 @@ export class DatosPage implements OnInit {
       this.container1 = this.latestData[1].contenedor1;
       this.container2 = this.latestData[1].contenedor2;
     });
+
+    var today = new Date();
+    var now = today.toLocaleString();
+    this.lastDateUpdated = now;
   }
 
   ionViewDidEnter() {
